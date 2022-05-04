@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ProyectoFinal.views import saludo
+from ProyectoFinal.views import saludo, AppCoder
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('saludo/', saludo)
+    path('saludo/', saludo),
+    path('AppCoder/', AppCoder),
+    path('templateFormCurso/', template_form_curso)
 ]
 
