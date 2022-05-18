@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#Everytime you create a new app you have to register it here
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
