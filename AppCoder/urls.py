@@ -4,5 +4,9 @@ from . import views
 #URLConf for this app
 
 urlpatterns = [
-    path('hello/', views.say_hello)
+    
+    path('', views.inicio),
+    path('especialidades', views.especialidades),
+    path('profesionales', views.profesionales),
+    path('pacientes', views.pacientes)
 ]
