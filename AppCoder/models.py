@@ -16,5 +16,7 @@ class Profesional(models.Model):
     nombre=models.CharField(max_length=50)
     apellido=models.CharField(max_length=50)
     email=models.EmailField()
-    especialidad=models.CharField(max_length=50)
+    #foreign key, modificar el modelo y luego migrarlo, relacion de uno a muchos
+    especialidad=models.ForeignKey(Especialidad, null= False, blank = False, on_delete =models.CASCADE)
     
+#relaciones de muchos a muchos, tabla interna que hace django

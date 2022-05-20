@@ -6,9 +6,6 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-#def say_hello(request):
-#   return render(request, 'hello.html', {'name': 'Mosh'})
-
 def inicio(request):
     return render(request, "AppCoder/inicio.html")
 
