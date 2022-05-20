@@ -18,5 +18,11 @@ class Profesional(models.Model):
     email=models.EmailField()
     #foreign key, modificar el modelo y luego migrarlo, relacion de uno a muchos
     especialidad=models.ForeignKey(Especialidad, null= False, blank = False, on_delete =models.CASCADE)
+
+class Contacto(models.Model):
+    nombre=models.CharField(max_length=50)
+    correo=models.EmailField()
+    telefono=models.IntegerField()
+    mensaje=models.CharField(max_length=500)
     
 #relaciones de muchos a muchos, tabla interna que hace django
