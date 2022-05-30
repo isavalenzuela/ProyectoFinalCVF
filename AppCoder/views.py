@@ -12,20 +12,20 @@ from AppCoder.models import Contacto, Especialidad, Profesional
 # Create your views here.
 
 
-def inicio(request):
-    return render(request, "AppCoder/inicio.html")
-
-
-def especialidades(request):
-    return render(request, "especialidades.html")
+def bienvenida(request):
+    return render(request, "bienvenida.html")
 
 
 def profesionales(request):
     return render(request, "profesionales.html")
 
 
-def pacientes(request):
-    return render(request, "pacientes.html")
+def registraProfesional(request):
+    return render(request, "registraProfesionales.html")
+
+
+def acerca(request):
+    return render(request, "acerca.html")
 
 
 def contactanos(request):

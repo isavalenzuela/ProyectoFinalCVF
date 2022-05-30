@@ -4,10 +4,10 @@ from . import views
 # URLConf for this app
 
 urlpatterns = [
-    path('', views.inicio),
-    path('especialidades', views.especialidades),
+    path('', views.bienvenida),
     path('profesionales', views.profesionales),
-    path('pacientes', views.pacientes),
+    path('registraProfesionales', views.registraProfesional),
+    path('acerca', views.acerca),
     path('contactanos', views.contactanos),
     path('recibeDatosContacto', views.recibeDatosContacto),
     path('login', views.login_request, name='Login'),

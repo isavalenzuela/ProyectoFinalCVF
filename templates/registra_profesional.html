@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- RegistrarProfesional-->
+<section class="page-section" id="contact">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center">
+                <h2 class="mt-0">Registra profesionales en nuestras bases de datos</h2>
+                <hr class="divider" />
+                <p class="text-muted mb-5">En esta sección puedes recomendar y agregar los datos de contacto de
+                    profesionales de la salud</p>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <form class="form-container" action="/recibeDatosContacto" method="post"> {% csrf_token%}
+                <div class="row">
+                    <div class="col-md-auto" style="min-width: 170px;">Nombre:</div>
+                    <div class="col-md-auto"><input type="text" name="nombre" class="form-control"
+                            placeholder="ingresa el nombre" /></div>
+                </div>
+                <div class="row" style=" padding-top: 24px">
+                    <div class="col-md-auto" style="min-width: 170px;">Apellido:</div>
+                    <div class="col-md-auto"><input type="text" name="correo" class="form-control"
+                            placeholder="ingresa el apellido" /></div>
+                </div>
+
+                <div class="row" style=" padding-top: 24px">
+                    <div class="col-md-auto" style="min-width: 170px;">Email:</div>
+                    <div class="col-md-auto"><input type="text" name="email" class="form-control"
+                            placeholder="ingresa su email" /></div>
+                </div>
+
+                <div class="row" style=" padding-top: 24px">
+                    <div class="col-md-auto" style="min-width: 170px;">Descripción</div>
+                    <div class="col-md-auto"><textarea id="msg" name="desc" class="form-control"
+                            name="profDescription"></textarea></div>
+                </div>
+
+                <div class="row" style=" padding-top: 24px">
+                    <div class="col-md-auto" style="min-width: 170px;">Lugar de Trabajo</div>
+                    <div class="col-md-auto"><textarea id="msg" name="workplace" class="form-control"
+                            name="workplace"></textarea></div>
+                </div>
+
+                <div class="row" style=" padding-top: 24px">
+                    <div class="col-md-auto" style="min-width: 170px;">Región</div>
+                    <div class="col-md-auto">
+                        <select name="profRegion" class="form-select" aria-label="Default select example">
+                            <option value="0" selected="selected">Regiones</option>
+                            <option value="1">1 Tarapaca</option>
+                            <option value="2">2 Antofagasta</option>
+                            <option value="3">3 Atacama</option>
+                            <option value="4">4 Coquimbo</option>
+                            <option value="5">5 Valparaiso</option>
+                            <option value="6">6 O'Higgins</option>
+                            <option value="7">7 Maule</option>
+                            <option value="8">8 Bio - Bio</option>
+                            <option value="9">9 Araucania</option>
+                            <option value="10">10 Los Lagos</option>
+                            <option value="11">11 Aisen</option>
+                            <option value="12">12 Magallanes Y Antartica</option>
+                            <option value="13">13 Metropolitana</option>
+                            <option value="14">14 Los Rios</option>
+                            <option value="15">15 Arica y Parinacota</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" style=" padding-top: 16px">
+                    <div class="col-md-auto"><button class="btn btn-primary" type="submit">Enviar</button></div>
+                </div>
+            </form>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                <i class="bi-phone fs-2 mb-3 text-muted"></i>
+                <div>Sección en construcción.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+{% endblock %}

@@ -20,6 +20,8 @@ class Profesional(models.Model):
     apellido = models.CharField(max_length=50)
     email = models.EmailField()
     desc = models.CharField(max_length=1000)
+    workplace = models.CharField(max_length=300)
+    profRegion = models.CharField(max_length=2)
     # foreign key, modificar el modelo y luego migrarlo, relacion de uno a muchos
     especialidad = models.ForeignKey(
         Especialidad, null=False, blank=False, on_delete=models.CASCADE)
