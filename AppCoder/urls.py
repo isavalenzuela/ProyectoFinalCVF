@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-#URLConf for this app
+# URLConf for this app
 
 urlpatterns = [
     path('', views.inicio),
@@ -10,5 +10,6 @@ urlpatterns = [
     path('pacientes', views.pacientes),
     path('contactanos', views.contactanos),
     path('recibeDatosContacto', views.recibeDatosContacto),
-    path('login', views.login_request, name='Login')
+    path('login', views.login_request, name='Login'),
+    path('listaProfesionales', views.lista_profesionales)
 ]
