@@ -34,3 +34,9 @@ class Contacto(models.Model):
     mensaje = models.CharField(max_length=500)
 
 # relaciones de muchos a muchos, tabla interna que hace django
+
+# class Avatar(models.Model):
+#     #vinculo con el usuario
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     #subcarpeta avatares de media
+#     imagen = models.ImageField(upload_to='avatares', null=True, blank = True)

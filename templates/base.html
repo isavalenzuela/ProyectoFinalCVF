@@ -25,7 +25,7 @@
 <body id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav"
-        style="background: black;position: relative;">
+        style="background: #f18805 ;position: relative;">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="/">Salud para todas las tallas Chile</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
@@ -33,7 +33,7 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/profesionales">Profesional según especialidad</a>
+                    <li class="nav-item"><a class="nav-link" href="/profesionales">Busca Profesionales</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/registraProfesionales">Registra Profesionales</a>
                     </li>
@@ -41,6 +41,13 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/contactanos">Contáctanos</a>
                     </li>
+                    {% if not request.user.is_authenticated %}
+                    <li><a class="btn btn-primary" href="/login">Inicia Sesión</a>
+                    </li>
+                    {% endif%}
+                    {% if request.user.is_authenticated %}
+                    <p class="text-muted small mb-4 mb-lg-0">Hola, {{user.username}}</p>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -54,7 +61,7 @@
     <!-- Footer-->
     <footer class="bg-light py-5">
         <div class="container px-4 px-lg-5">
-            <div class="small text-center text-muted">Copyright &copy; 2022 - Company Name</div>
+            <div class="small text-center text-muted">All images belong to GETTY IMAGES</div>
         </div>
     </footer>
     <!-- Bootstrap core JS-->
