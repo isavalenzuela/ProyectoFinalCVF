@@ -20,8 +20,6 @@ class Contacto(models.Model):
     telefono = models.IntegerField()
     mensaje = models.CharField(max_length=500)
 
-# relaciones de muchos a muchos, tabla interna que hace django
-
 # class Avatar(models.Model):
 #     #vinculo con el usuario
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -4,6 +4,18 @@
 <!-- RegistrarProfesional-->
 <section class="page-section" id="contact">
     <div class="container px-4 px-lg-5">
+        {% if success %}
+
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+
+            <div class="col-lg-8 col-xl-6 text-center">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 3rem;">
+                    Profesional registrado exitosamente.
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8 col-xl-6 text-center">
                 <h2 class="mt-0">Registra profesionales en nuestras bases de datos</h2>
@@ -12,46 +24,55 @@
                     profesionales de la salud</p>
             </div>
         </div>
-        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-            <form class="form-container" action="/recibeDatosProfesional" method="post"> {% csrf_token%}
+        <div class="row justify-content-center">
+            <form class="form-container" style="max-width: 600px;" action="/recibeDatosProfesional" method="post">
+                {%csrf_token%}
                 <div class="row">
-                    <div class="col-md-auto" style="min-width: 170px;">Nombre:</div>
-                    <div class="col-md-auto"><input type="text" name="nombre" class="form-control"
+                    <div class="col-md-6 mw-278">Nombre:</div>
+                    <div class="col-md-6 mw-278"><input type="text" name="nombre" class="form-control"
                             placeholder="ingresa el nombre" /></div>
                 </div>
                 <div class="row" style=" padding-top: 24px">
-                    <div class="col-md-auto" style="min-width: 170px;">Apellido:</div>
-                    <div class="col-md-auto"><input type="text" name="apellido" class="form-control"
+                    <div class="col-md-6 mw-278">Apellido:</div>
+                    <div class="col-md-6 mw-278"><input type="text" name="apellido" class="form-control"
                             placeholder="ingresa el apellido" /></div>
                 </div>
 
                 <div class="row" style=" padding-top: 24px">
-                    <div class="col-md-auto" style="min-width: 170px;">Especialidad:</div>
-                    <div class="col-md-auto"><input type="text" name="especialidad" class="form-control"
-                            placeholder="Ingresa su especialidad" /></div>
+                    <div class="col-md-6 mw-278">Especialidad:</div>
+                    <div class="col-md-6 mw-278">
+                        <select name="profRegion" class="form-select" aria-label="Default select example">
+                            <option selected>Selecciona</option>
+                            <option value="Ginecología">Ginecología</option>
+                            <option value="Psicología">Psicología</option>
+                            <option value="Psiquiatría">Psiquiatría</option>
+                            <option value="Nutrición">Nutrición</option>
+                            <option value="Medicina General">Medicina General</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="row" style=" padding-top: 24px">
-                    <div class="col-md-auto" style="min-width: 170px;">Descripción</div>
-                    <div class="col-md-auto"><textarea id="msg" name="desc" class="form-control"
+                    <div class="col-md-6 mw-278">Descripción:</div>
+                    <div class="col-md-6 mw-278"><textarea id="msg" name="desc" class="form-control"
                             placeholder="ingresa una breve descripcion"></textarea></div>
                 </div>
 
                 <div class="row" style=" padding-top: 24px">
-                    <div class="col-md-auto" style="min-width: 170px;">Lugar de Trabajo</div>
-                    <div class="col-md-auto"><textarea id="msg" name="workplace" class="form-control"
+                    <div class="col-md-6 mw-278">Lugar de Trabajo:</div>
+                    <div class="col-md-6 mw-278"><textarea id="msg" name="workplace" class="form-control"
                             placeholder="ingresa el lugar donde atiende"></textarea></div>
                 </div>
 
                 <div class="row" style=" padding-top: 24px">
-                    <div class="col-md-auto" style="min-width: 170px;">Email:</div>
-                    <div class="col-md-auto"><input type="text" name="email" class="form-control"
+                    <div class="col-md-6 mw-278">Email:</div>
+                    <div class="col-md-6 mw-278"><input type="text" name="email" class="form-control"
                             placeholder="ingresa su email" /></div>
                 </div>
 
                 <div class="row" style=" padding-top: 24px">
-                    <div class="col-md-auto" style="min-width: 170px;">Región</div>
-                    <div class="col-md-auto">
+                    <div class="col-md-6 mw-278">Región</div>
+                    <div class="col-md-6 mw-278">
                         <select name="profRegion" class="form-select" aria-label="Default select example">
                             <option value="0" selected="selected">Regiones</option>
                             <option value="1">1 Tarapaca</option>
@@ -73,8 +94,9 @@
                     </div>
                 </div>
 
-                <div class="row" style=" padding-top: 16px">
-                    <div class="col-md-auto"><button class="btn btn-primary" type="submit">Enviar</button></div>
+                <div class="row" style="padding-top: 24px; padding-bottom: 24px">
+                    <div class="col-md-auto"><button class="btn btn-primary" type="submit"
+                            style="min-width: 150px;">Enviar</button></div>
                 </div>
             </form>
         </div>
@@ -92,6 +114,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .mw-278 {
+        min-width: 278px;
     }
 </style>
 {% endblock %}

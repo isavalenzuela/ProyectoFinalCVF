@@ -42,7 +42,10 @@ def recibeDatosContacto(request):
                         telefono=telefono, mensaje=mensaje)
     contacto.save()
 
-    return render(request, "contactanos.html")
+    contexto = {
+        'success': True
+    }
+    return render(request, "contactanos.html", contexto)
 
 
 def login_request(request):
@@ -70,7 +73,7 @@ def login_request(request):
 def lista_profesionales(request):
     if request.method == 'GET':
         usr_select = request.GET['usrselect']
-
+        print(usr_select)
         profesionales = Profesional.objects.filter(especialidad=usr_select)
 
         print(profesionales)
@@ -96,4 +99,8 @@ def recibeDatosProfesional(request):
                                       email=email, desc=desc, workplace=workplace, profRegion=profRegion)
     registroProfesional.save()
 
-    return render(request, "registraProfesionales.html")
+    contexto = {
+        'success': True
+    }
+
+    return render(request, "registraProfesionales.html", contexto)
