@@ -1,11 +1,11 @@
+import email
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
-from AppCoder.models import Contacto, Especialidad, Profesional
-#from AppCoder.forms import CursoFormulario, EstudianteFormulario, ProfesorFormulario
+from AppCoder.models import Contacto, Profesional
 # this is a request handler
 # request -> response
 
@@ -82,3 +82,18 @@ def lista_profesionales(request):
         return render(request, "profesionales.html", contexto)
 
     return render(request, "profesionales.html", contexto)
+
+
+def recibeDatosProfesional(request):
+    nombre = request.POST['nombre']
+    apellido = request.POST['apellido']
+    email = request.POST['email']
+    desc = request.POST['desc']
+    workplace = request.POST['workplace']
+    profRegion = request.POST['profRegion']
+
+    registroProfesional = Profesional(nombre=nombre, apellido=apellido,
+                                      email=email, desc=desc, workplace=workplace, profRegion=profRegion)
+    registroProfesional.save()
+
+    return render(request, "registraProfesionales.html")

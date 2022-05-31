@@ -11,5 +11,6 @@ urlpatterns = [
     path('contactanos', views.contactanos),
     path('recibeDatosContacto', views.recibeDatosContacto),
     path('login', views.login_request, name='Login'),
-    path('listaProfesionales', views.lista_profesionales)
+    path('listaProfesionales', views.lista_profesionales),
+    path('recibeDatosProfesional', views.recibeDatosProfesional)
 ]

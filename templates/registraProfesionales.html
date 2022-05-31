@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-            <form class="form-container" action="/recibeDatosContacto" method="post"> {% csrf_token%}
+            <form class="form-container" action="/recibeDatosProfesional" method="post"> {% csrf_token%}
                 <div class="row">
                     <div class="col-md-auto" style="min-width: 170px;">Nombre:</div>
                     <div class="col-md-auto"><input type="text" name="nombre" class="form-control"
@@ -21,26 +21,32 @@
                 </div>
                 <div class="row" style=" padding-top: 24px">
                     <div class="col-md-auto" style="min-width: 170px;">Apellido:</div>
-                    <div class="col-md-auto"><input type="text" name="correo" class="form-control"
+                    <div class="col-md-auto"><input type="text" name="apellido" class="form-control"
                             placeholder="ingresa el apellido" /></div>
+                </div>
+
+                <div class="row" style=" padding-top: 24px">
+                    <div class="col-md-auto" style="min-width: 170px;">Especialidad:</div>
+                    <div class="col-md-auto"><input type="text" name="especialidad" class="form-control"
+                            placeholder="Ingresa su especialidad" /></div>
+                </div>
+
+                <div class="row" style=" padding-top: 24px">
+                    <div class="col-md-auto" style="min-width: 170px;">Descripción</div>
+                    <div class="col-md-auto"><textarea id="msg" name="desc" class="form-control"
+                            placeholder="ingresa una breve descripcion"></textarea></div>
+                </div>
+
+                <div class="row" style=" padding-top: 24px">
+                    <div class="col-md-auto" style="min-width: 170px;">Lugar de Trabajo</div>
+                    <div class="col-md-auto"><textarea id="msg" name="workplace" class="form-control"
+                            placeholder="ingresa el lugar donde atiende"></textarea></div>
                 </div>
 
                 <div class="row" style=" padding-top: 24px">
                     <div class="col-md-auto" style="min-width: 170px;">Email:</div>
                     <div class="col-md-auto"><input type="text" name="email" class="form-control"
                             placeholder="ingresa su email" /></div>
-                </div>
-
-                <div class="row" style=" padding-top: 24px">
-                    <div class="col-md-auto" style="min-width: 170px;">Descripción</div>
-                    <div class="col-md-auto"><textarea id="msg" name="desc" class="form-control"
-                            name="profDescription"></textarea></div>
-                </div>
-
-                <div class="row" style=" padding-top: 24px">
-                    <div class="col-md-auto" style="min-width: 170px;">Lugar de Trabajo</div>
-                    <div class="col-md-auto"><textarea id="msg" name="workplace" class="form-control"
-                            name="workplace"></textarea></div>
                 </div>
 
                 <div class="row" style=" padding-top: 24px">
