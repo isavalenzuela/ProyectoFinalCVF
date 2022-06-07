@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 # URLConf for this app
@@ -13,6 +13,9 @@ urlpatterns = [
     path('login', views.login_request, name='Login'),
     path('listaProfesionales', views.lista_profesionales),
     path('recibeDatosProfesional', views.recibeDatosProfesional),
-    path('editaProfesional/<int:id>/', views.editaProfesional),
-    path('eliminaProfesional/<int:id>/', views.eliminaProfesional)
+    re_path(r'cargaDatos Profesional/(?P<id>[0-9]+)',
+            views.cargaDatosProfesional, name='cargaDatosProfesional'),
+    path('editaProfesional', views.editaProfesional),
+    re_path(r'eliminaProfesional/<int:id>/',
+            views.eliminaProfesional, name='eliminaProfesional')
 ]

@@ -107,10 +107,34 @@ def recibeDatosProfesional(request):
     return render(request, "registraProfesionales.html", contexto)
 
 
-def editaProfesional(request,option):
-    print(request)
-    print(option)
-    contexto = 0
+def cargaDatosProfesional(request, id):
+    profesional = Profesional.objects.get(id=id)
+
+    contexto = {
+        'profesional': profesional
+    }
+
+    return render(request, "editaProfesional.html", contexto)
+
+
+def editaProfesional(request):
+    if request.method == 'POST':
+        profesional = Profesional.objects.get(id=request.POST['id'])
+
+        profesional.nombre = request.POST['nombre']
+        profesional.apellido = request.POST['apellido']
+        profesional.email = request.POST['email']
+        profesional.desc = request.POST['desc']
+        profesional.workplace = request.POST['workplace']
+        profesional.profRegion = request.POST['profRegion']
+        profesional.especialidad = request.POST['profEspecialidad']
+
+        profesional.save()
+
+        contexto = {
+            'profesional': profesional,
+            'success': True
+        }
 
     return render(request, "editaProfesional.html", contexto)
 

@@ -36,8 +36,8 @@
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
                         <th scope="col">Descripcion</th>
-                        <th scope="col">Editar</th>
-                        <th scope="col">Eliminar</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,9 +48,8 @@
                         <td>{{ profesional.apellido }}</td>
                         <td>{{ profesional.email }}</td>
                         <td>{{ profesional.desc }}</td>
-                        <td><a class="button btn-primary"
-                                href="{% url 'editaProfesional' value={{profesional.id}} %}">Editar</a></td>
-                        <td><a class="button btn-primary" href="/eliminaProfesional">Eliminar</a></td>
+                        <td><a href="{% url 'cargaDatosProfesional' id=profesional.id %}">Editar</a></td>
+                        <td><a href="/eliminaProfesional">Eliminar</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

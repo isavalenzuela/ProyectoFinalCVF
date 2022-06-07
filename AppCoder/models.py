@@ -6,7 +6,7 @@ from django.db import models
 
 
 class Profesional(models.Model):
-    #id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     email = models.EmailField()

@@ -2,12 +2,128 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
+{% if profesional %}
+<div class="container" style="margin-top: 24px;">
+
+    {% if success %}
+
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+
+        <div class="col-lg-8 col-xl-6 text-center">
+            <div class="alert alert-success" role="alert" style="margin-bottom: 3rem;">
+                Profesional editado exitosamente.
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-auto">
             <h2>Edita Profesional</h2>
         </div>
     </div>
+    <div class="row justify-content-center" style="margin-top: 24px;">
+        <form class="form-container" style="max-width: 600px;" action="/editaProfesional" method="post">
+            {%csrf_token%}
+            <input type="hidden" id="id" name="id" value={{profesional.id}}>
+            <div class="row">
+                <div class="col-md-6 mw-278">Nombre:</div>
+                <div class="col-md-6 mw-278"><input type="text" name="nombre" class="form-control"
+                        placeholder="ingresa el nombre" value={{profesional.nombre}} /></div>
+            </div>
+            <div class="row" style=" padding-top: 24px">
+                <div class="col-md-6 mw-278">Apellido:</div>
+                <div class="col-md-6 mw-278"><input type="text" name="apellido" class="form-control"
+                        placeholder="ingresa el apellido" value={{profesional.apellido}} /></div>
+            </div>
+
+            <div class="row" style=" padding-top: 24px">
+                <div class="col-md-6 mw-278">Especialidad:</div>
+                <div class="col-md-6 mw-278">
+                    <select name="profEspecialidad" class="form-select" aria-label="Default select example">
+                        {% if profesional.especialidad == "Ginecología" %}
+                        <option value="Ginecología" selected>Ginecología</option>
+                        {% else %}
+                        <option value="Ginecología">Ginecología</option>
+                        {% endif %}
+
+                        {% if profesional.especialidad == "Psicología" %}
+                        <option value="Psicología" selected>Psicología</option>
+                        {% else %}
+                        <option value="Psicología">Psicología</option>
+                        {% endif %}
+
+                        {% if profesional.especialidad == "Psiquiatría" %}
+                        <option value="Psiquiatría" selected>Psiquiatría</option>
+                        {% else %}
+                        <option value="Psiquiatría">Psiquiatría</option>
+                        {% endif %}
+
+                        {% if profesional.especialidad == "Nutrición" %}
+                        <option value="Nutrición" selected>Nutrición</option>
+                        {% else %}
+                        <option value="Nutrición">Nutrición</option>
+                        {% endif %}
+
+                        {% if profesional.especialidad == "Medicina General" %}
+                        <option value="Medicina General" selected>Medicina General</option>
+                        {% else %}
+                        <option value="Medicina General">Medicina General</option>
+                        {% endif %}
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style=" padding-top: 24px">
+                <div class="col-md-6 mw-278">Descripción:</div>
+                <div class="col-md-6 mw-278"><textarea id="msg" name="desc" class="form-control"
+                        placeholder="ingresa una breve descripcion">{{profesional.desc}}</textarea></div>
+            </div>
+
+            <div class="row" style=" padding-top: 24px">
+                <div class="col-md-6 mw-278">Lugar de Trabajo:</div>
+                <div class="col-md-6 mw-278"><textarea id="msg" name="workplace" class="form-control"
+                        placeholder="ingresa el lugar donde atiende">{{profesional.workplace}}</textarea></div>
+            </div>
+
+            <div class="row" style=" padding-top: 24px">
+                <div class="col-md-6 mw-278">Email:</div>
+                <div class="col-md-6 mw-278"><input type="text" name="email" class="form-control"
+                        placeholder="ingresa su email" value={{profesional.email}} /></div>
+            </div>
+
+            <div class="row" style=" padding-top: 24px">
+                <div class="col-md-6 mw-278">Región</div>
+                <div class="col-md-6 mw-278">
+                    <select name="profRegion" class="form-select" aria-label="Default select example"
+                        value={{profesional.profRegion}}>
+                        <option value="1">1 Tarapaca</option>
+                        <option value="2">2 Antofagasta</option>
+                        <option value="3">3 Atacama</option>
+                        <option value="4">4 Coquimbo</option>
+                        <option value="5">5 Valparaiso</option>
+                        <option value="6">6 O'Higgins</option>
+                        <option value="7">7 Maule</option>
+                        <option value="8">8 Bio - Bio</option>
+                        <option value="9">9 Araucania</option>
+                        <option value="10">10 Los Lagos</option>
+                        <option value="11">11 Aisen</option>
+                        <option value="12">12 Magallanes Y Antartica</option>
+                        <option value="13">13 Metropolitana</option>
+                        <option value="14">14 Los Rios</option>
+                        <option value="15">15 Arica y Parinacota</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style="padding-top: 24px; padding-bottom: 24px">
+                <div class="col-md-auto"><button class="btn btn-primary" type="submit"
+                        style="min-width: 150px;">Enviar</button></div>
+            </div>
+        </form>
+    </div>
 </div>
+{% endif %}
 
 {% endblock %}
