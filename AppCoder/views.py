@@ -97,7 +97,7 @@ def recibeDatosProfesional(request):
     profEspecialidad = request.POST['profEspecialidad']
 
     registroProfesional = Profesional(nombre=nombre, apellido=apellido,
-                                      email=email, desc=desc, workplace=workplace, profRegion=profRegion, profEspecialidad=profEspecialidad)
+                                      email=email, desc=desc, workplace=workplace, profRegion=profRegion, especialidad=profEspecialidad)
     registroProfesional.save()
 
     contexto = {
