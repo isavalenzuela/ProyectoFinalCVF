@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="row justify-content-center" style="margin-top: 24px;">
-        <form class="form-container" style="max-width: 600px;" action="/editaProfesional" method="post">
+        <form class="form-container" style="max-width: 600px;" action="/executeEditaProfesional" method="post">
             {%csrf_token%}
             <input type="hidden" id="id" name="id" value={{profesional.id}}>
             <div class="row">
@@ -96,23 +96,96 @@
             <div class="row" style=" padding-top: 24px">
                 <div class="col-md-6 mw-278">Región</div>
                 <div class="col-md-6 mw-278">
-                    <select name="profRegion" class="form-select" aria-label="Default select example"
-                        value={{profesional.profRegion}}>
+                    <select name="profRegion" class="form-select" aria-label="Default select example">
+                        {% if profesional.profRegion == "1" %}
+                        <option value="1" selected>1 Tarapaca</option>
+                        {% else %}
                         <option value="1">1 Tarapaca</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "2" %}
+                        <option value="2" selected>2 Antofagasta</option>
+                        {% else %}
                         <option value="2">2 Antofagasta</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "3" %}
+                        <option value="3" selected>3 Atacama</option>
+                        {% else %}
                         <option value="3">3 Atacama</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "4" %}
+                        <option value="4" selected>4 Coquimbo</option>
+                        {% else %}
                         <option value="4">4 Coquimbo</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "5" %}
+                        <option value="5" selected>5 Valparaiso</option>
+                        {% else %}
                         <option value="5">5 Valparaiso</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "6" %}
+                        <option value="6" selected>6 O'Higgins</option>
+                        {% else %}
                         <option value="6">6 O'Higgins</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "7" %}
+                        <option value="7" selected>7 Maule</option>
+                        {% else %}
                         <option value="7">7 Maule</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "8" %}
+                        <option value="8" selected>8 Bio - Bio</option>
+                        {% else %}
                         <option value="8">8 Bio - Bio</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "9" %}
+                        <option value="9" selected>9 Araucania</option>
+                        {% else %}
                         <option value="9">9 Araucania</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "10" %}
+                        <option value="10" selected>10 Los Lagos</option>
+                        {% else %}
                         <option value="10">10 Los Lagos</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "11" %}
+                        <option value="11" selected>11 Aisen</option>
+                        {% else %}
                         <option value="11">11 Aisen</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "12" %}
+                        <option value="12" selected>12 Magallanes Y Antartica</option>
+                        {% else %}
                         <option value="12">12 Magallanes Y Antartica</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "13" %}
+                        <option value="13" selected>13 Metropolitana</option>
+                        {% else %}
                         <option value="13">13 Metropolitana</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "14" %}
+                        <option value="14" selected>14 Los Rios</option>
+                        {% else %}
                         <option value="14">14 Los Rios</option>
+                        {% endif %}
+
+                        {% if profesional.profRegion == "15" %}
+                        <option value="15" selected>15 Arica y Parinacota</option>
+                        {% else %}
                         <option value="15">15 Arica y Parinacota</option>
+                        {% endif %}
                     </select>
                 </div>
             </div>

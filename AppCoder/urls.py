@@ -15,7 +15,7 @@ urlpatterns = [
     path('recibeDatosProfesional', views.recibeDatosProfesional),
     re_path(r'cargaDatos Profesional/(?P<id>[0-9]+)',
             views.cargaDatosProfesional, name='cargaDatosProfesional'),
-    path('editaProfesional', views.editaProfesional),
+    path('executeEditaProfesional', views.executeEditaProfesional),
     re_path(r'eliminaProfesional/<int:id>/',
             views.eliminaProfesional, name='eliminaProfesional')
 ]

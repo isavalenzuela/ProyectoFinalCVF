@@ -117,7 +117,7 @@ def cargaDatosProfesional(request, id):
     return render(request, "editaProfesional.html", contexto)
 
 
-def editaProfesional(request):
+def executeEditaProfesional(request):
     if request.method == 'POST':
         profesional = Profesional.objects.get(id=request.POST['id'])
 
