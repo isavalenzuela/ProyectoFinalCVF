@@ -12,5 +12,7 @@ urlpatterns = [
     path('recibeDatosContacto', views.recibeDatosContacto),
     path('login', views.login_request, name='Login'),
     path('listaProfesionales', views.lista_profesionales),
-    path('recibeDatosProfesional', views.recibeDatosProfesional)
+    path('recibeDatosProfesional', views.recibeDatosProfesional),
+    path('editaProfesional/<int:id>/', views.editaProfesional),
+    path('eliminaProfesional/<int:id>/', views.eliminaProfesional)
 ]

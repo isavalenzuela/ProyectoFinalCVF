@@ -94,9 +94,10 @@ def recibeDatosProfesional(request):
     desc = request.POST['desc']
     workplace = request.POST['workplace']
     profRegion = request.POST['profRegion']
+    profEspecialidad = request.POST['profEspecialidad']
 
     registroProfesional = Profesional(nombre=nombre, apellido=apellido,
-                                      email=email, desc=desc, workplace=workplace, profRegion=profRegion)
+                                      email=email, desc=desc, workplace=workplace, profRegion=profRegion, profEspecialidad=profEspecialidad)
     registroProfesional.save()
 
     contexto = {
@@ -104,3 +105,18 @@ def recibeDatosProfesional(request):
     }
 
     return render(request, "registraProfesionales.html", contexto)
+
+
+def editaProfesional(request,option):
+    print(request)
+    print(option)
+    contexto = 0
+
+    return render(request, "editaProfesional.html", contexto)
+
+
+def eliminaProfesional(request):
+
+    contexto = 0
+
+    return render(request, "eliminaProfesional.html", contexto)
