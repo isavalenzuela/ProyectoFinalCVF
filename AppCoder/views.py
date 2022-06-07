@@ -139,8 +139,24 @@ def executeEditaProfesional(request):
     return render(request, "editaProfesional.html", contexto)
 
 
-def eliminaProfesional(request):
+def eliminaProfesional(request, id):
+    profesional = Profesional.objects.get(id=id)
 
-    contexto = 0
+    contexto = {
+        'profesional': profesional,
+        'successfulyEliminated': False
+    }
+
+    return render(request, "eliminaProfesional.html", contexto)
+
+
+def executeEliminaProfesional(request):
+
+    profesional = Profesional.objects.get(id=request.POST['id'])
+    profesional.delete()
+
+    contexto = {
+        'successfulyEliminated': True
+    }
 
     return render(request, "eliminaProfesional.html", contexto)

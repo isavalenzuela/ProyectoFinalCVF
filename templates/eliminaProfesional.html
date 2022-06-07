@@ -2,12 +2,44 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
+
+<div class="container" style="margin-top: 24px;">
+
+    {% if successfulyEliminated %}
+
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+
+        <div class="col-lg-8 col-xl-6 text-center">
+            <div class="alert alert-success" role="alert" style="margin-bottom: 3rem;">
+                Profesional eliminado exitosamente.
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    {% if profesional %}
+    <div class="row justify-content-center">
+        <div class="col-md-auto">
             <h2>Elimina Profesional</h2>
         </div>
     </div>
+    <div class="row justify-content-center" style="margin-top: 24px;">
+        <form class="form-container" style="max-width: 600px;" action="/executeEliminaProfesional" method="post">
+            {%csrf_token%}
+            <input type="hidden" id="id" name="id" value={{profesional.id}}>
+            <p>¿Estás segur@ de eliminar este profesional?</p>
+            <p>Nombre: {{profesional.nombre}}</p>
+            <p>Apellido: {{profesional.apellido}}</p>
+            <p>Especialidad: {{profesional.especialidad}}</p>
+            <div class="row" style="padding-top: 24px; padding-bottom: 24px">
+                <div class="col-md-auto"><button class="btn btn-primary" type="submit"
+                        style="min-width: 150px;">Eliminar</button></div>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+    {% endif %}
+
 </div>
 
 {% endblock %}

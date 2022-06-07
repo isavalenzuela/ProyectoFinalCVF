@@ -49,7 +49,7 @@
                         <td>{{ profesional.email }}</td>
                         <td>{{ profesional.desc }}</td>
                         <td><a href="{% url 'cargaDatosProfesional' id=profesional.id %}">Editar</a></td>
-                        <td><a href="{% url 'cargaDatosProfesional' id=profesional.id %}">Eliminar</a></td>
+                        <td><a href="{% url 'eliminaProfesional' id=profesional.id %}">Eliminar</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
