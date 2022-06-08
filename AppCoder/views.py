@@ -22,9 +22,9 @@ def login_request(request):
             contra = form.cleaned_data.get('password')
             user = authenticate(username=usuario, password=contra)
             avatares = Avatar.objects.filter(user=user)
-            print(avatares[0].imagen)
+
             contexto = {'mensaje': f"Bienvenid@ {user}",
-                        'avatar': f"media/{avatares[0].imagen}"}
+                        'avatar_url': f"media/{avatares[0].imagen}"}
 
             if user:
                 print('entre al if logueado')
@@ -48,7 +48,7 @@ def register(request):
 
             username = form.cleaned_data['username']
             form.save()
-            return render(request, "bienvenida.html", {'mensaje': "Usuari@ Creado"})
+            return render(request, "login.html", {'mensaje': "Usuari@ Creado"})
 
     else:
         form = UserRegisterForm()
