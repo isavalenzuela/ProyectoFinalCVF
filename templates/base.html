@@ -32,7 +32,7 @@
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0" style="display: flex; align-items: center;">
 
                     {% if not request.user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="/profesionales">Busca Profesionales</a>
@@ -52,8 +52,11 @@
                     {% if not request.user.is_authenticated %}
                     <li><a class="btn btn-primary" href="/login">Inicia Sesión</a>
                     </li>
+                    <li><a class="btn btn-primary" href="/register">Regístrate</a>
+                    </li>
                     {% endif%}
                     {% if request.user.is_authenticated %}
+                    <img src={{avatar}} alt="" style="width: 5%; height: 10%; border-radius: 50px;">
                     <p class="text-muted small mb-4 mb-lg-0">Hola, {{user.username}}</p>
                     <li><a class="btn btn-primary" href="/logout">Cierra Sesión</a>
                     </li>

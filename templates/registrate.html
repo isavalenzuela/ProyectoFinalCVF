@@ -14,15 +14,22 @@
 
 <body>
 
-    <form action="" method="post">
+    <div class="container">
+        <div class="row justify-content-center py-5">
+            <div class="col-md-auto">
+                <form action="/register" method="post">
 
-        {% csrf_token %}
+                    {% csrf_token %}
 
-        {{form.as_p}}
+                    {{form.as_p}}
 
-        <button type="submit"> Regístrate</button>
+                    <button type="submit" class="button btn-primary"> Regístrate</button>
 
-    </form>
+                </form>
+            </div>
+
+        </div>
+    </div>
 
 </body>
 

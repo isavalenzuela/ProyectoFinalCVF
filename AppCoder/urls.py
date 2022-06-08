@@ -26,5 +26,3 @@ urlpatterns = [
             views.eliminaProfesional, name='eliminaProfesional'),
     path('executeEliminaProfesional', views.executeEliminaProfesional),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

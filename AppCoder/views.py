@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
-from AppCoder.models import Contacto, Profesional, UserRegisterForm
+from AppCoder.models import Contacto, Profesional, UserRegisterForm, Avatar
 # this is a request handler
 # request -> response
 
@@ -21,11 +21,15 @@ def login_request(request):
             usuario = form.cleaned_data.get('username')
             contra = form.cleaned_data.get('password')
             user = authenticate(username=usuario, password=contra)
+            avatares = Avatar.objects.filter(user=user)
+            print(avatares[0].imagen)
+            contexto = {'mensaje': f"Bienvenid@ {user}",
+                        'avatar': f"media/{avatares[0].imagen}"}
 
             if user:
                 print('entre al if logueado')
                 login(request, user)
-                return render(request, "bienvenida.html", {'mensaje': f"Bienvenid@ {user}"})
+                return render(request, "bienvenida.html", contexto)
 
         else:
             return render(request, "bienvenida.html", {'mensaje': "Error. Datos incorrectos"})
