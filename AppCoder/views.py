@@ -1,15 +1,61 @@
 import email
-from django.shortcuts import render
+from operator import imod
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
-from AppCoder.models import Contacto, Profesional
+from AppCoder.models import Contacto, Profesional, UserRegisterForm
 # this is a request handler
 # request -> response
 
 # Create your views here.
+
+
+def login_request(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contra = form.cleaned_data.get('password')
+            user = authenticate(username=usuario, password=contra)
+
+            if user:
+                print('entre al if logueado')
+                login(request, user)
+                return render(request, "bienvenida.html", {'mensaje': f"Bienvenid@ {user}"})
+
+        else:
+            return render(request, "bienvenida.html", {'mensaje': "Error. Datos incorrectos"})
+    else:
+        form = AuthenticationForm()
+
+    return render(request, "AppCoder/login.html", {'form': form})
+
+
+def register(request):
+
+    if request.method == 'POST':
+
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request, "bienvenida.html", {'mensaje': "Usuari@ Creado"})
+
+    else:
+        form = UserRegisterForm()
+
+    return render(request, "registrate.html", {"form": form})
+
+
+def logout_request(request):
+    logout(request)
+
+    return redirect("inicio")
 
 
 def bienvenida(request):
@@ -46,28 +92,6 @@ def recibeDatosContacto(request):
         'success': True
     }
     return render(request, "contactanos.html", contexto)
-
-
-def login_request(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-
-        if form.is_valid():
-            usuario = form.cleaned_data.get('username')
-            contra = form.cleaned_data.get('password')
-            user = authenticate(username=usuario, password=contra)
-
-            if user:
-                print('entre al if logueado')
-                login(request, user)
-                return render(request, "bienvenida.html", {'mensaje': f"Bienvenid@ {user}"})
-
-        else:
-            return render(request, "AppCoder/inicio.html", {'mensaje': "Error. Datos incorrectos"})
-    else:
-        form = AuthenticationForm()
-
-    return render(request, "AppCoder/login.html", {'form': form})
 
 
 def lista_profesionales(request):
@@ -107,6 +131,7 @@ def recibeDatosProfesional(request):
     return render(request, "registraProfesionales.html", contexto)
 
 
+@login_required
 def cargaDatosProfesional(request, id):
     profesional = Profesional.objects.get(id=id)
 
@@ -117,6 +142,7 @@ def cargaDatosProfesional(request, id):
     return render(request, "editaProfesional.html", contexto)
 
 
+@login_required
 def executeEditaProfesional(request):
     if request.method == 'POST':
         profesional = Profesional.objects.get(id=request.POST['id'])
@@ -139,6 +165,7 @@ def executeEditaProfesional(request):
     return render(request, "editaProfesional.html", contexto)
 
 
+@login_required
 def eliminaProfesional(request, id):
     profesional = Profesional.objects.get(id=id)
 
@@ -150,6 +177,7 @@ def eliminaProfesional(request, id):
     return render(request, "eliminaProfesional.html", contexto)
 
 
+@login_required
 def executeEliminaProfesional(request):
 
     profesional = Profesional.objects.get(id=request.POST['id'])

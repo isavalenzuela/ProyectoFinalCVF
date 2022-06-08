@@ -1,5 +1,8 @@
 from django.urls import path, re_path
 from . import views
+from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 # URLConf for this app
 
@@ -11,6 +14,9 @@ urlpatterns = [
     path('contactanos', views.contactanos),
     path('recibeDatosContacto', views.recibeDatosContacto),
     path('login', views.login_request, name='Login'),
+    path('register', views.register, name='register'),
+    path('logout', LogoutView.as_view(
+        template_name='logout.html'), name='Logout'),
     path('listaProfesionales', views.lista_profesionales),
     path('recibeDatosProfesional', views.recibeDatosProfesional),
     re_path(r'cargaDatos Profesional/(?P<id>[0-9]+)',
@@ -20,3 +26,5 @@ urlpatterns = [
             views.eliminaProfesional, name='eliminaProfesional'),
     path('executeEliminaProfesional', views.executeEliminaProfesional),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

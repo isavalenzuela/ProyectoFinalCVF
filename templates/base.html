@@ -33,8 +33,16 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
+
+                    {% if not request.user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="/profesionales">Busca Profesionales</a>
                     </li>
+                    {% endif%}
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="/profesionales">Busca, edita y elimina
+                            Profesionales</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item"><a class="nav-link" href="/registraProfesionales">Registra Profesionales</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/acerca">Acerca de nosotr@s</a>
@@ -47,6 +55,8 @@
                     {% endif%}
                     {% if request.user.is_authenticated %}
                     <p class="text-muted small mb-4 mb-lg-0">Hola, {{user.username}}</p>
+                    <li><a class="btn btn-primary" href="/logout">Cierra Sesión</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
